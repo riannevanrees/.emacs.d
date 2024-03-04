@@ -11,6 +11,8 @@ This configuration is inspired by these sources:
 - [[https://github.com/reinout/.emacs.d][My father's configuration]]
 - [[https://lucidmanager.org/productivity/configure-emacs/][Writing studio]]
 
+If I edit the configuration, I can tangle the org file using the command C-c C-v t. Then, if I go to the init.el file, I can use the command M-x ev-b (eval-buffer) to reload the emacs configuration without having to close the program.
+
 * Start of the init file
 
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -18,6 +20,7 @@ This configuration is inspired by these sources:
   ;; This file is exported from emacs.org.
   ;; URL: https://github.com/riannevanrees/.emacs.d
 #+END_SRC
+
 
 * Package archive list
 
@@ -29,6 +32,7 @@ This configuration is inspired by these sources:
     (package-initialize))
 #+end_src
 
+
 * Make sure emacs custom settings are written to custom.el
 
 #+begin_src emacs-lisp :tangle yes
@@ -37,7 +41,9 @@ This configuration is inspired by these sources:
   (when (file-exists-p custom-file)
     (load custom-file))
 #+end_src
+
 * Typing
+
 ** Auto-complete
 
 This code snippet loads the package which-key. It displays the key bindings that can follow a currently incomplete command, after a default waiting time of 1 second. 
@@ -48,6 +54,23 @@ This code snippet loads the package which-key. It displays the key bindings that
   :config
   (which-key-mode)
   )
+#+end_src
+
+
+** Line wrapping
+
+It is frustrating is lines continue endlessly or words are continued on a different line, because a certain character limit is reached. The goal of this bit is to automatically wrap lines at 88 characters.
+
+M-q fills the current paragraph. At the moment, the visual-fill-column-mode needs to be specifically enabled. This is done with the command C-c v. [[https://github.com/reinout/.emacs.d/blob/main/init.el][Here]] it is followed up with some code to undo the filling if necessary, so I can choose to implement that if I should need it.
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package visual-fill-column
+    :ensure t
+    :init
+    (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
+    :bind ("C-c v" . visual-line-mode)
+    )
+ (setq-default fill-column 80)
 #+end_src
 
 * Theme
@@ -61,7 +84,11 @@ This code snippet loads the package which-key. It displays the key bindings that
   )
 #+end_src
 
+
 * Not yet done
-** Visual line-fill mode
+
+** PDF-tools
+
+** Org mode
 
 ** Short answers
