@@ -1,0 +1,67 @@
+#+TITLE: Emacs configuration
+:PROPERTIES:
+#+AUTHOR: Rianne van Rees
+#+STARTUP: fold
+#+PROPERTY: header-args :results silent :tangle yes
+:END:
+
+This configuration is inspired by these sources:
+
+- [[https://github.com/jakebox/jake-emacs/blob/main/jake-emacs/init.el][Jake-emacs]]
+- [[https://github.com/reinout/.emacs.d][My father's configuration]]
+- [[https://lucidmanager.org/productivity/configure-emacs/][Writing studio]]
+
+* Start of the init file
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+  ;; Riannes emacs configuration.
+  ;; This file is exported from emacs.org.
+  ;; URL: https://github.com/riannevanrees/.emacs.d
+#+END_SRC
+
+* Package archive list
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package package
+    :config
+    (add-to-list 'package-archives
+                 '("melpa" . "https://melpa.org/packages/"))
+    (package-initialize))
+#+end_src
+
+* Make sure emacs custom settings are written to custom.el
+
+#+begin_src emacs-lisp :tangle yes
+  (setq-default custom-file
+                (expand-file-name "custom.el" user-emacs-directory))
+  (when (file-exists-p custom-file)
+    (load custom-file))
+#+end_src
+* Typing
+** Auto-complete
+
+This code snippet loads the package which-key. It displays the key bindings that can follow a currently incomplete command, after a default waiting time of 1 second. 
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package which-key
+  :ensure t
+  :config
+  (which-key-mode)
+  )
+#+end_src
+
+* Theme
+#+begin_src emacs-lisp :tangle yes
+  (use-package modus-themes
+  :ensure t
+  :config
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs t)
+  (load-theme 'modus-vivendi-tinted :no-confirm)
+  )
+#+end_src
+
+* Not yet done
+** Visual line-fill mode
+
+** Short answers
