@@ -34,3 +34,8 @@
       modus-themes-bold-constructs t)
 (load-theme 'modus-vivendi-tinted :no-confirm)
 )
+
+(setq org-todo-keywords
+      '((sequence "TODO" "|" "DONE")
+	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID")
+	(sequence "LES" "VERZETTELEN" "|" "VOLTOOID")))

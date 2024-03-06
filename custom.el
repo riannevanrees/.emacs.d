@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
-   '("~/Documents/tijd/vgsn.org" "/Users/rianne/Documents/tijd/tijd.org"))
+   '("~/Documents/tijd/studie.org" "/Users/rianne/Documents/tijd/orgel.org" "/Users/rianne/Documents/tijd/schrijven.org" "/Users/rianne/Documents/tijd/vgsn.org" "/Users/rianne/Documents/tijd/tijd.org"))
  '(package-selected-packages
    '(matlab-mode @ pdf-tools modus-themes markdown-mode better-defaults)))
 (custom-set-faces

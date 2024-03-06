@@ -42,6 +42,7 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
     (load custom-file))
 #+end_src
 
+
 * Typing
 
 ** Auto-complete
@@ -73,6 +74,7 @@ M-q fills the current paragraph. At the moment, the visual-fill-column-mode need
  (setq-default fill-column 80)
 #+end_src
 
+
 * Theme
 #+begin_src emacs-lisp :tangle yes
   (use-package modus-themes
@@ -84,6 +86,16 @@ M-q fills the current paragraph. At the moment, the visual-fill-column-mode need
   )
 #+end_src
 
+* Org
+
+I edited the TODO keywords, so that I could see more easily where I was in the process.
+
+#+begin_src emacs-lisp :tangle yes
+  (setq org-todo-keywords
+	'((sequence "TODO" "|" "DONE")
+	  (sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID")
+	  (sequence "LES" "VERZETTELEN" "|" "VOLTOOID")))
+#+end_src
 
 * Not yet done
 
