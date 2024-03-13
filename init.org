@@ -74,6 +74,18 @@ M-q fills the current paragraph. At the moment, the visual-fill-column-mode need
  (setq-default fill-column 80)
 #+end_src
 
+** Shorten yes and no
+
+#+begin_src emacs-lisp :tangle yes
+  (setq use-short-answers t) ;; When emacs asks for "yes" or "no", let "y" or "n" suffice
+#+end_src
+
+* Move backup files to a temporary directory
+
+#+begin_src emacs-lisp :tangle yes
+  (setq backup-directory-alist
+            `((".*" . ,temporary-file-directory)))
+#+end_src
 
 * Theme
 #+begin_src emacs-lisp :tangle yes

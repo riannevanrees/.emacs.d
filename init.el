@@ -27,6 +27,8 @@
    )
 (setq-default fill-column 80)
 
+(setq use-short-answers t) ;; When emacs asks for "yes" or "no", let "y" or "n" suffice
+
 (use-package modus-themes
 :ensure t
 :config
