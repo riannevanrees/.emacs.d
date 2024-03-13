@@ -9,3 +9,6 @@ transient
 tutorial
 *~
 test
+#init.el#
+init.elc
+.*

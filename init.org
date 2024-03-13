@@ -44,7 +44,6 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
 
 
 * Typing
-
 ** Auto-complete
 
 This code snippet loads the package which-key. It displays the key bindings that can follow a currently incomplete command, after a default waiting time of 1 second. 
@@ -56,7 +55,6 @@ This code snippet loads the package which-key. It displays the key bindings that
   (which-key-mode)
   )
 #+end_src
-
 
 ** Line wrapping
 
@@ -80,6 +78,17 @@ M-q fills the current paragraph. At the moment, the visual-fill-column-mode need
   (setq use-short-answers t) ;; When emacs asks for "yes" or "no", let "y" or "n" suffice
 #+end_src
 
+** Line distance
+
+I'd like this value to be higher, but at the moment it also lengthens the cursor and applies both to text and to code and for code the value of 1 works better.
+#+begin_src emacs-lisp :tangle yes
+  (setq-default line-spacing 1)
+#+end_src
+* Icons
+#+begin_src emacs-lisp :tangle yes
+  (use-package all-the-icons)
+#+end_src
+
 * Move backup files to a temporary directory
 
 #+begin_src emacs-lisp :tangle yes
@@ -93,13 +102,14 @@ M-q fills the current paragraph. At the moment, the visual-fill-column-mode need
   :ensure t
   :config
   (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs t)
+	modus-themes-bold-constructs t)
   (load-theme 'modus-vivendi-tinted :no-confirm)
   )
 #+end_src
 
 * Org
 
+** Custom TODO keywords
 I edited the TODO keywords, so that I could see more easily where I was in the process.
 
 #+begin_src emacs-lisp :tangle yes
@@ -109,6 +119,35 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 	  (sequence "LES" "VERZETTELEN" "|" "VOLTOOID")))
 #+end_src
 
+** Use icons for headers and lists
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package org-superstar
+    :config
+    (setq org-superstar-leading-bullet " ")
+    (setq org-superstar-special-todo-items t) ;; Makes TODO header bullets into boxes
+    (setq org-superstar-todo-bullet-alist '(("TODO" . 9744)
+					    ("LES" . 9744)
+					    ("LEZEN" . 9744)
+					    ("VERZETTELEN" . 9744)
+					    ("DONE" . 9745)
+					    ("VOLTOOID" . 9745)))
+    )
+#+end_src
+
+** Hide emphasis markers
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package org-appear
+    :commands (org-appear-mode)
+    :hook (org-mode . org-appear-mode)
+    :init
+    (setq org-hide-emphasis-markers t		;; A default setting that needs to be t for org-appear
+	org-appear-autoemphasis t		;; Enable org-appear on emphasis (bold, italics, etc)
+	org-appear-autolinks nil		;; Don't enable on links
+	org-appear-autosubmarkers t))	;; Enable on subscript and superscript
+#+end_src
+
 * Not yet done
 
 ** PDF-tools
@@ -116,3 +155,4 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 ** Org mode
 
 ** Short answers
+** Look at frame settings in Jake B's init
