@@ -36,18 +36,14 @@
 (setq backup-directory-alist
           `((".*" . ,temporary-file-directory)))
 
-(use-package modus-themes
-:ensure t
-:config
-(setq modus-themes-italic-constructs t
-      modus-themes-bold-constructs t)
-(load-theme 'modus-vivendi-tinted :no-confirm)
-)
+(use-package gandalf-theme)
+(load-theme 'gandalf :no-confirm)
 
 (setq org-todo-keywords
-      '((sequence "TODO" "|" "DONE")
-	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID")
-	(sequence "LES" "VERZETTELEN" "|" "VOLTOOID")))
+      '((sequence "TODO" "|" "DONE" "CANCELLED")
+	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")
+	(sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
+	(sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")))
 
 (use-package org-superstar
   :config
@@ -60,6 +56,8 @@
 					  ("DONE" . 9745)
 					  ("VOLTOOID" . 9745)))
   )
+
+(setq org-deadline-warning-days 7)
 
 (use-package org-appear
   :commands (org-appear-mode)
