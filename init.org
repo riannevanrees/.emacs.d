@@ -98,7 +98,7 @@ I'd like this value to be higher, but at the moment it also lengthens the cursor
 
 * Theme
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
   (use-package gandalf-theme)
   (load-theme 'gandalf :no-confirm)
 #+end_src

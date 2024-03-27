@@ -36,9 +36,6 @@
 (setq backup-directory-alist
           `((".*" . ,temporary-file-directory)))
 
-(use-package gandalf-theme)
-(load-theme 'gandalf :no-confirm)
-
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "CANCELLED")
 	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")
