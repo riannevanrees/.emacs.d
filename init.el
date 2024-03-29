@@ -43,7 +43,7 @@
 	(sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")))
 
 (use-package org-superstar
-  :hook org-mode
+  :hook (org-mode . (lambda () (org-superstar-mode 1)))
   :custom
   (org-superstar-leading-bullet " ")
   (org-superstar-remove-leading-stars t)
@@ -53,6 +53,7 @@
 				     ("VERZETTELEN" . 9744)
 				     ("DONE" . 9745)
 				     ("VOLTOOID" 9745))))
+;(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
 (setq org-deadline-warning-days 7)
 

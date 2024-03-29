@@ -158,7 +158,7 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 
 #+begin_src emacs-lisp :tangle yes
   (use-package org-superstar
-    :hook org-mode
+    :hook (org-mode . (lambda () (org-superstar-mode 1)))
     :custom
     (org-superstar-leading-bullet " ")
     (org-superstar-remove-leading-stars t)
