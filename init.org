@@ -128,6 +128,19 @@ Disabled bit of code to load the modus vivendi theme. I disliked the look of the
   )
 #+end_src
 
+These are the themes that were enabled in custom. I've removed them, because I was both adding themes in custom and in the init, so they were starting to contradict each other.
+
+#+begin_src emacs-lisp :tangle no
+  '(custom-enabled-themes '(klere gandalf))
+ '(custom-safe-themes
+   '("e613c2ffe0d6c9463d67f37275566ab3c47bdd70114fc3387738a4eb292ea156" "0af489efe6c0d33b6e9b02c6690eb66ab12998e2649ea85ab7cfedfb39dd4ac9" "afbf9f9095f71a175c9afc87c63e036544c99155e56fd1c0779c5519035ec650" default))
+#+end_src
+
+#+begin_src emacs-lisp :tangle no
+  '(package-selected-packages
+   '(cyberpunk-theme klere-theme gandalf-theme distinguished-theme afternoon-theme org-superstar all-the-icons auctex matlab-mode @ pdf-tools modus-themes markdown-mode better-defaults))
+#+end_src
+
 * Org
 
 ** Custom TODO keywords
