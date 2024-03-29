@@ -69,11 +69,13 @@ Visual-fill-column also has an option that centers text, so now there are at lea
 #+begin_src emacs-lisp :tangle yes
    (use-package visual-fill-column
      :ensure t
-     :hook (visual-line-mode global-visual-fill-column-mode org-mode)
      :bind ("C-c v" . visual-line-mode))
   (setq-default fill-column 80)
   (setq-default visual-fill-column-center-text t)
   (global-visual-fill-column-mode)
+
+  (use-package visual-line-mode
+    :hook (text-mode prog-mode))
 #+end_src
 
 ** Shorten yes and no

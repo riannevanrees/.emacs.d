@@ -21,11 +21,13 @@
 
 (use-package visual-fill-column
    :ensure t
-   :hook (visual-line-mode global-visual-fill-column-mode org-mode)
    :bind ("C-c v" . visual-line-mode))
 (setq-default fill-column 80)
 (setq-default visual-fill-column-center-text t)
 (global-visual-fill-column-mode)
+
+(use-package visual-line-mode
+  :hook (text-mode prog-mode))
 
 (setq use-short-answers t) ;; When emacs asks for "yes" or "no", let "y" or "n" suffice
 
@@ -53,7 +55,6 @@
 				     ("VERZETTELEN" . 9744)
 				     ("DONE" . 9745)
 				     ("VOLTOOID" 9745))))
-;(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
 (setq org-deadline-warning-days 7)
 
