@@ -31,8 +31,6 @@
 
 (setq-default line-spacing 1)
 
-(use-package all-the-icons)
-
 (setq backup-directory-alist
           `((".*" . ,temporary-file-directory)))
 

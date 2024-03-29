@@ -89,7 +89,10 @@ I'd like this value to be higher, but at the moment it also lengthens the cursor
   (setq-default line-spacing 1)
 #+end_src
 * Icons
-#+begin_src emacs-lisp :tangle yes
+
+I don't tangle this package at the moment, because I'm not actually using it. But there's a chance that I will at some point, so for now I'll keep it in here as a reminder.
+
+#+begin_src emacs-lisp :tangle no
   (use-package all-the-icons)
 #+end_src
 
