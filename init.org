@@ -158,16 +158,16 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 
 #+begin_src emacs-lisp :tangle yes
   (use-package org-superstar
-    :config
-    (setq org-superstar-leading-bullet " ")
-    (setq org-superstar-special-todo-items t) ;; Makes TODO header bullets into boxes
-    (setq org-superstar-todo-bullet-alist '(("TODO" . 9744)
-					    ("LES" . 9744)
-					    ("LEZEN" . 9744)
-					    ("VERZETTELEN" . 9744)
-					    ("DONE" . 9745)
-					    ("VOLTOOID" . 9745)))
-    )
+    :hook org-mode
+    :custom
+    (org-superstar-leading-bullet " ")
+    (org-superstar-remove-leading-stars t)
+    (org-superstar-todo-bullet-alist '(("TODO" . 9744)
+				       ("LES" . 9744)
+				       ("LEZEN" . 9744)
+				       ("VERZETTELEN" . 9744)
+				       ("DONE" . 9745)
+				       ("VOLTOOID" 9745))))
 #+end_src
 
 ** Customize agenda

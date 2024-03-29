@@ -43,16 +43,16 @@
 	(sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")))
 
 (use-package org-superstar
-  :config
-  (setq org-superstar-leading-bullet " ")
-  (setq org-superstar-special-todo-items t) ;; Makes TODO header bullets into boxes
-  (setq org-superstar-todo-bullet-alist '(("TODO" . 9744)
-					  ("LES" . 9744)
-					  ("LEZEN" . 9744)
-					  ("VERZETTELEN" . 9744)
-					  ("DONE" . 9745)
-					  ("VOLTOOID" . 9745)))
-  )
+  :hook org-mode
+  :custom
+  (org-superstar-leading-bullet " ")
+  (org-superstar-remove-leading-stars t)
+  (org-superstar-todo-bullet-alist '(("TODO" . 9744)
+				     ("LES" . 9744)
+				     ("LEZEN" . 9744)
+				     ("VERZETTELEN" . 9744)
+				     ("DONE" . 9745)
+				     ("VOLTOOID" 9745))))
 
 (setq org-deadline-warning-days 7)
 
