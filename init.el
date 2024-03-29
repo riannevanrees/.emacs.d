@@ -32,7 +32,9 @@
 (setq-default line-spacing 1)
 
 (setq backup-directory-alist
-          `((".*" . ,temporary-file-directory)))
+	  `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory t)))
 
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "CANCELLED")
