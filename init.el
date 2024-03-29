@@ -21,12 +21,11 @@
 
 (use-package visual-fill-column
    :ensure t
-   :hook (visual-line-mode)
-   :bind ("C-c v" . visual-line-mode)
-   ;:custom (fill-column 80)
-   )
+   :hook (visual-line-mode global-visual-fill-column-mode org-mode)
+   :bind ("C-c v" . visual-line-mode))
 (setq-default fill-column 80)
 (setq-default visual-fill-column-center-text t)
+(global-visual-fill-column-mode)
 
 (setq use-short-answers t) ;; When emacs asks for "yes" or "no", let "y" or "n" suffice
 
