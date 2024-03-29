@@ -28,7 +28,7 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
   (use-package package
     :config
     (add-to-list 'package-archives
-                 '("melpa" . "https://melpa.org/packages/"))
+		 '("melpa" . "https://melpa.org/packages/"))
     (package-initialize))
 #+end_src
 
@@ -37,7 +37,7 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
 
 #+begin_src emacs-lisp :tangle yes
   (setq-default custom-file
-                (expand-file-name "custom.el" user-emacs-directory))
+		(expand-file-name "custom.el" user-emacs-directory))
   (when (file-exists-p custom-file)
     (load custom-file))
 #+end_src
@@ -50,26 +50,31 @@ This code snippet loads the package which-key. It displays the key bindings that
 
 #+begin_src emacs-lisp :tangle yes
   (use-package which-key
-  :ensure t
-  :config
-  (which-key-mode)
-  )
+    :ensure t
+    :config
+    (which-key-mode)
+    )
 #+end_src
 
-** Line wrapping
+** Line wrapping and text-centering
 
 It is frustrating is lines continue endlessly or words are continued on a different line, because a certain character limit is reached. The goal of this bit is to automatically wrap lines at 88 characters.
 
 M-q fills the current paragraph. At the moment, the visual-fill-column-mode needs to be specifically enabled. This is done with the command C-c v. [[https://github.com/reinout/.emacs.d/blob/main/init.el][Here]] it is followed up with some code to undo the filling if necessary, so I can choose to implement that if I should need it.
 
+The package documentation of visual-fill-column recommends using setq-default to set fill-column. I'm not sure how to do that with use-package yet, :custom does setq, I believe.
+
+Visual-fill-column also has an option that centers text, so now there are at least left and right margins.
+
 #+begin_src emacs-lisp :tangle yes
-  (use-package visual-fill-column
-    :ensure t
-    :init
-    (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
-    :bind ("C-c v" . visual-line-mode)
-    )
- (setq-default fill-column 80)
+   (use-package visual-fill-column
+     :ensure t
+     :hook (visual-line-mode)
+     :bind ("C-c v" . visual-line-mode)
+     ;:custom (fill-column 80)
+     )
+  (setq-default fill-column 80)
+  (setq-default visual-fill-column-center-text t)
 #+end_src
 
 ** Shorten yes and no

@@ -5,27 +5,28 @@
 (use-package package
   :config
   (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/"))
+	       '("melpa" . "https://melpa.org/packages/"))
   (package-initialize))
 
 (setq-default custom-file
-              (expand-file-name "custom.el" user-emacs-directory))
+	      (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
 
 (use-package which-key
-:ensure t
-:config
-(which-key-mode)
-)
+  :ensure t
+  :config
+  (which-key-mode)
+  )
 
 (use-package visual-fill-column
    :ensure t
-   :init
-   (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
+   :hook (visual-line-mode)
    :bind ("C-c v" . visual-line-mode)
+   ;:custom (fill-column 80)
    )
 (setq-default fill-column 80)
+(setq-default visual-fill-column-center-text t)
 
 (setq use-short-answers t) ;; When emacs asks for "yes" or "no", let "y" or "n" suffice
 
