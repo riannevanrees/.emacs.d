@@ -160,7 +160,7 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 
 #+begin_src emacs-lisp :tangle yes
   (use-package org-superstar
-    :hook (org-mode . (lambda () (org-superstar-mode 1)))
+    ;:hook (org-mode . (lambda () (org-superstar-mode 1)))
     :custom
     (org-superstar-leading-bullet " ")
     (org-superstar-remove-leading-stars t)
@@ -170,6 +170,8 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 				       ("VERZETTELEN" . 9744)
 				       ("DONE" . 9745)
 				       ("VOLTOOID" 9745))))
+
+  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 #+end_src
 
 ** Customize agenda
@@ -180,7 +182,9 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 
 ** Hide emphasis markers
 
-#+begin_src emacs-lisp :tangle yes
+No such package, so I don't tangle it for now.
+
+#+begin_src emacs-lisp :tangle no
   (use-package org-appear
     :commands (org-appear-mode)
     :hook (org-mode . org-appear-mode)

@@ -45,7 +45,7 @@
 	(sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")))
 
 (use-package org-superstar
-  :hook (org-mode . (lambda () (org-superstar-mode 1)))
+  ;:hook (org-mode . (lambda () (org-superstar-mode 1)))
   :custom
   (org-superstar-leading-bullet " ")
   (org-superstar-remove-leading-stars t)
@@ -56,13 +56,6 @@
 				     ("DONE" . 9745)
 				     ("VOLTOOID" 9745))))
 
-(setq org-deadline-warning-days 7)
+(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
-(use-package org-appear
-  :commands (org-appear-mode)
-  :hook (org-mode . org-appear-mode)
-  :init
-  (setq org-hide-emphasis-markers t		;; A default setting that needs to be t for org-appear
-      org-appear-autoemphasis t		;; Enable org-appear on emphasis (bold, italics, etc)
-      org-appear-autolinks nil		;; Don't enable on links
-      org-appear-autosubmarkers t))	;; Enable on subscript and superscript
+(setq org-deadline-warning-days 7)
