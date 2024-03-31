@@ -8,7 +8,8 @@
  '(org-format-latex-options
    '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
- )
+ '(package-selected-packages
+   '(autothemer which-key visual-fill-column pdf-tools org-superstar modus-themes matlab-mode markdown-mode magit klere-theme julia-mode gandalf-theme distinguished-theme cyberpunk-theme better-defaults auctex all-the-icons afternoon-theme @)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

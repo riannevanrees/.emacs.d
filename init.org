@@ -108,39 +108,11 @@ I don't tangle this package at the moment, because I'm not actually using it. Bu
 #+end_src
 
 * Theme
+I use a self-developed theme, with colors inspired by the Disney movie Sleeping Beauty, because I like the colors that are used. I am trying to make both a light and a dark version. The night scenes in the movie use quite different colors for the fairy dresses: Flora's normally red dress becomes purple, for example. By having such an explicit source of inspiration, I hope that the colors make more sense and avoid the angry fruit salad effect, that plagues certain emacs themes. Warnings and errors can be in Maleficent's colors: purple and green. Red is actually a positive color in this movie, because it is associated with Philip.
 
-#+begin_src emacs-lisp :tangle no
-  (use-package gandalf-theme)
-  (load-theme 'gandalf :no-confirm)
-#+end_src
-
-#+begin_src emacs-lisp :tangle no
-  (use-package afternoon-theme)
-  (load-theme 'afternoon t)
-#+end_src
-
-Disabled bit of code to load the modus vivendi theme. I disliked the look of the heading at level 2.
-#+begin_src emacs-lisp :tangle no
-  (use-package modus-themes
-  :ensure t
-  :config
-  (setq modus-themes-italic-constructs t
-	modus-themes-bold-constructs t)
-  (load-theme 'modus-vivendi-tinted :no-confirm)
-  )
-#+end_src
-
-These are the themes that were enabled in custom. I've removed them, because I was both adding themes in custom and in the init, so they were starting to contradict each other.
-
-#+begin_src emacs-lisp :tangle no
-  '(custom-enabled-themes '(klere gandalf))
- '(custom-safe-themes
-   '("e613c2ffe0d6c9463d67f37275566ab3c47bdd70114fc3387738a4eb292ea156" "0af489efe6c0d33b6e9b02c6690eb66ab12998e2649ea85ab7cfedfb39dd4ac9" "afbf9f9095f71a175c9afc87c63e036544c99155e56fd1c0779c5519035ec650" default))
-#+end_src
-
-#+begin_src emacs-lisp :tangle no
-  '(package-selected-packages
-   '(cyberpunk-theme klere-theme gandalf-theme distinguished-theme afternoon-theme org-superstar all-the-icons auctex matlab-mode @ pdf-tools modus-themes markdown-mode better-defaults))
+#+begin_src emacs-lisp
+  (use-package autothemer
+  :ensure t)
 #+end_src
 
 * Org

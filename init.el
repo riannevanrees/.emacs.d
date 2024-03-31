@@ -38,6 +38,9 @@
 (setq auto-save-file-name-transforms
         `((".*" ,temporary-file-directory t)))
 
+(use-package autothemer
+:ensure t)
+
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "CANCELLED")
 	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")
