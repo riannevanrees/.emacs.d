@@ -28,7 +28,7 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
   (use-package package
     :config
     (add-to-list 'package-archives
-                 '("melpa" . "https://melpa.org/packages/"))
+		 '("melpa" . "https://melpa.org/packages/"))
     (package-initialize))
 #+end_src
 
@@ -37,7 +37,7 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
 
 #+begin_src emacs-lisp :tangle yes
   (setq-default custom-file
-                (expand-file-name "custom.el" user-emacs-directory))
+		(expand-file-name "custom.el" user-emacs-directory))
   (when (file-exists-p custom-file)
     (load custom-file))
 #+end_src
@@ -50,26 +50,32 @@ This code snippet loads the package which-key. It displays the key bindings that
 
 #+begin_src emacs-lisp :tangle yes
   (use-package which-key
-  :ensure t
-  :config
-  (which-key-mode)
-  )
+    :ensure t
+    :config
+    (which-key-mode)
+    )
 #+end_src
 
-** Line wrapping
+** Line wrapping and text-centering
 
 It is frustrating is lines continue endlessly or words are continued on a different line, because a certain character limit is reached. The goal of this bit is to automatically wrap lines at 88 characters.
 
 M-q fills the current paragraph. At the moment, the visual-fill-column-mode needs to be specifically enabled. This is done with the command C-c v. [[https://github.com/reinout/.emacs.d/blob/main/init.el][Here]] it is followed up with some code to undo the filling if necessary, so I can choose to implement that if I should need it.
 
+The package documentation of visual-fill-column recommends using setq-default to set fill-column. I'm not sure how to do that with use-package yet, :custom does setq, I believe.
+
+Visual-fill-column also has an option that centers text, so now there are at least left and right margins.
+
 #+begin_src emacs-lisp :tangle yes
-  (use-package visual-fill-column
-    :ensure t
-    :init
-    (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
-    :bind ("C-c v" . visual-line-mode)
-    )
- (setq-default fill-column 80)
+   (use-package visual-fill-column
+     :ensure t
+     :bind ("C-c v" . visual-line-mode))
+  (setq-default fill-column 80)
+  (setq-default visual-fill-column-center-text t)
+  (global-visual-fill-column-mode)
+
+  (use-package visual-line-mode
+    :hook (text-mode prog-mode))
 #+end_src
 
 ** Shorten yes and no
@@ -85,7 +91,10 @@ I'd like this value to be higher, but at the moment it also lengthens the cursor
   (setq-default line-spacing 1)
 #+end_src
 * Icons
-#+begin_src emacs-lisp :tangle yes
+
+I don't tangle this package at the moment, because I'm not actually using it. But there's a chance that I will at some point, so for now I'll keep it in here as a reminder.
+
+#+begin_src emacs-lisp :tangle no
   (use-package all-the-icons)
 #+end_src
 
@@ -93,7 +102,9 @@ I'd like this value to be higher, but at the moment it also lengthens the cursor
 
 #+begin_src emacs-lisp :tangle yes
   (setq backup-directory-alist
-            `((".*" . ,temporary-file-directory)))
+	    `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+          `((".*" ,temporary-file-directory t)))
 #+end_src
 
 * Theme
@@ -119,6 +130,19 @@ Disabled bit of code to load the modus vivendi theme. I disliked the look of the
   )
 #+end_src
 
+These are the themes that were enabled in custom. I've removed them, because I was both adding themes in custom and in the init, so they were starting to contradict each other.
+
+#+begin_src emacs-lisp :tangle no
+  '(custom-enabled-themes '(klere gandalf))
+ '(custom-safe-themes
+   '("e613c2ffe0d6c9463d67f37275566ab3c47bdd70114fc3387738a4eb292ea156" "0af489efe6c0d33b6e9b02c6690eb66ab12998e2649ea85ab7cfedfb39dd4ac9" "afbf9f9095f71a175c9afc87c63e036544c99155e56fd1c0779c5519035ec650" default))
+#+end_src
+
+#+begin_src emacs-lisp :tangle no
+  '(package-selected-packages
+   '(cyberpunk-theme klere-theme gandalf-theme distinguished-theme afternoon-theme org-superstar all-the-icons auctex matlab-mode @ pdf-tools modus-themes markdown-mode better-defaults))
+#+end_src
+
 * Org
 
 ** Custom TODO keywords
@@ -136,16 +160,18 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 
 #+begin_src emacs-lisp :tangle yes
   (use-package org-superstar
-    :config
-    (setq org-superstar-leading-bullet " ")
-    (setq org-superstar-special-todo-items t) ;; Makes TODO header bullets into boxes
-    (setq org-superstar-todo-bullet-alist '(("TODO" . 9744)
-					    ("LES" . 9744)
-					    ("LEZEN" . 9744)
-					    ("VERZETTELEN" . 9744)
-					    ("DONE" . 9745)
-					    ("VOLTOOID" . 9745)))
-    )
+    ;:hook (org-mode . (lambda () (org-superstar-mode 1)))
+    :custom
+    (org-superstar-leading-bullet " ")
+    (org-superstar-remove-leading-stars t)
+    (org-superstar-todo-bullet-alist '(("TODO" . 9744)
+				       ("LES" . 9744)
+				       ("LEZEN" . 9744)
+				       ("VERZETTELEN" . 9744)
+				       ("DONE" . 9745)
+				       ("VOLTOOID" 9745))))
+
+  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 #+end_src
 
 ** Customize agenda
@@ -156,7 +182,9 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 
 ** Hide emphasis markers
 
-#+begin_src emacs-lisp :tangle yes
+No such package, so I don't tangle it for now.
+
+#+begin_src emacs-lisp :tangle no
   (use-package org-appear
     :commands (org-appear-mode)
     :hook (org-mode . org-appear-mode)
