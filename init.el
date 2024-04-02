@@ -41,6 +41,13 @@
 (use-package autothemer
 :ensure t)
 
+(use-package mixed-pitch
+:hook
+;; If you want it in all text modes:
+(text-mode . mixed-pitch-mode))
+
+(load-theme 'sleeping-beauty t)
+
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "CANCELLED")
 	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")

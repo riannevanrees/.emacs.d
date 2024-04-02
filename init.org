@@ -110,9 +110,18 @@ I don't tangle this package at the moment, because I'm not actually using it. Bu
 * Theme
 I use a self-developed theme, with colors inspired by the Disney movie Sleeping Beauty, because I like the colors that are used. I am trying to make both a light and a dark version. The night scenes in the movie use quite different colors for the fairy dresses: Flora's normally red dress becomes purple, for example. By having such an explicit source of inspiration, I hope that the colors make more sense and avoid the angry fruit salad effect, that plagues certain emacs themes. Warnings and errors can be in Maleficent's colors: purple and green. Red is actually a positive color in this movie, because it is associated with Philip.
 
+I prefer a variable pitch font over a fixed pitch font in most cases. Activating the package mixed-pitch-mode in all text-modes takes care of choosing the correct font.
+
 #+begin_src emacs-lisp
   (use-package autothemer
   :ensure t)
+
+  (use-package mixed-pitch
+  :hook
+  ;; If you want it in all text modes:
+  (text-mode . mixed-pitch-mode))
+
+  (load-theme 'sleeping-beauty t)
 #+end_src
 
 * Org
