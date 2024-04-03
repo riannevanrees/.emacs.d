@@ -1,0 +1,28 @@
+#+TITLE: Sleeping Beauty theme
+#+DATE: 2 april 2024
+
+* Introduction
+The colours of this theme are inspired by the Disney movie Sleeping Beauty, because that movie is colourful, but still looks very pretty, so this decision will hopefully not result in an angry fruit salad combination.
+
+It also means that some colours can actually have a logical meaning:
+
+- Warnings and errors can come in Maleficent's colours: purple and green.
+- TODO and DONE states can be respectively pink and blue, referring to the pink-blue fight ("make it blue!").
+- Red, which is often used for errors, is actually a positive colour in this theme, because it is associated with Philip.
+
+This file contains the light theme. The intention is to also make a night theme, since the colours used for the night scenes in Sleeping Beauty are also pretty and are noticably different from the day theme. Flora's normally red dress becomes purple, for example.
+
+This file will also contain a number of reference pictures of the movie, with colour references.
+
+* Different color palettes
+[[https://colorfulanimationexpressions.blogspot.com/2016/05/sumptuous-costume-colors-fairy-tale.html][This blog post]] contains an analysis of the colour use in the movie.
+
+A lot of the colors in the film are actually muted by mixing it with black. That is why simply picking the actual color in the image gives a different look than the movie, because the color is viewed with its context. It also mixed several color palettes that are in the film.
+
+- The *night* colour scheme, where the fairies have purple, green and blue dresses. They blend into the night more, but quite often, they are the only part of the frame that is still in the day color palette, particularly when they are flying. So the red-green-blue combination does not disappear entirely.
+- The *fairies* each have their own hue: orange, green and blue. Strangely, while pink is clearly Flora's favourite color, she dresses in reds and oranges.
+- In the *woods*, Aurora wears mostly grey colours. The brightness of the colours does vary, so that is why the dress still looks interesting. Philipp wears similar colours beneath his bright red cape. The red cape stands out very clearly in the green woods.
+- The *royal* color palette contains blue, magenta, red, orange, yellow and black. It does not contain any green. Aurora's blue dress fits in rather well, the pink one feels slightly out of place.
+
+* Start of the theme code
+

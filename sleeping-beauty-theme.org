@@ -17,6 +17,19 @@ This file will also contain a number of reference pictures of the movie, with co
 
 The reference images are in the sleeping-beauty-images folder.
 
+* Color palettes
+
+[[https://colorfulanimationexpressions.blogspot.com/2016/05/sumptuous-costume-colors-fairy-tale.html][This blog post]] contains an analysis of the colour use in the movie.
+
+A lot of the colors in the film are actually muted by mixing it with black. That is why simply picking the actual color in the image gives a different look than the movie, because the color is viewed with its context. It also mixed several color palettes that are in the film.
+
+- The *night* colour scheme, where the fairies have purple, green and blue dresses. They blend into the night more, but quite often, they are the only part of the frame that is still in the day color palette, particularly when they are flying. So the red-green-blue combination does not disappear entirely.
+- The *fairies* each have their own hue: orange, green and blue. Strangely, while pink is clearly Flora's favourite color, she dresses in reds and oranges.
+- In the *woods*, Aurora wears mostly grey colours. The brightness of the colours does vary, so that is why the dress still looks interesting. Philipp wears similar colours beneath his bright red cape. The red cape stands out very clearly in the green woods.
+- The *royal* color palette contains blue, magenta, red, orange, yellow and black. It does not contain any green. Aurora's blue dress fits in rather well, the pink one feels slightly out of place.
+
+ I think I want to use the *royal* colors for the day scheme and a combination of the *fairy* and *night* colour scheme for the night theme.
+
 * Start of the theme code
 
 #+begin_src emacs-lisp :tangle yes
