@@ -69,3 +69,5 @@
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
 (setq org-deadline-warning-days 7)
+
+(setq org-blank-before-new-entry '((heading . t) (plain-list-item . auto)))

@@ -176,6 +176,10 @@ No such package, so I don't tangle it for now.
 	org-appear-autosubmarkers t))	;; Enable on subscript and superscript
 #+end_src
 
+** Other settings
+#+begin_src emacs-lisp :tangle yes
+  (setq org-blank-before-new-entry '((heading . t) (plain-list-item . auto)))
+#+end_src
 * Not yet done
 
 ** PDF-tools

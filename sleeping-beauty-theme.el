@@ -99,6 +99,14 @@
    (org-document-info     (:foreground crowned-dress-light))
    (org-level-1           (:foreground crowned-dress-dark :weight 'bold :height 1.5))
    (org-level-2           (:foreground crowned-red :weight 'bold))
+   (org-todo              (:foreground "HotPink"))
+   (org-done              (:foreground dancing-blue :weight 'bold :slant 'italic))
+   (org-headline-done     (:foreground dancing-blue :slant 'italic))
+
+   (org-imminent-deadline (:foreground "green3" :weight 'bold))
+   (org-upcoming-deadline (:foreground "Purple3" :weight 'bold))
+   (org-scheduled-previously (:foreground "Purple3"))
+   (org-scheduled-today   ())
    ))
 
 (provide-theme 'sleeping-beauty)
