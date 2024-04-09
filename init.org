@@ -158,7 +158,22 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 ** Customize agenda
 
 #+begin_src emacs-lisp :tangle yes
+  (global-set-key (kbd "C-c a") 'org-agenda)
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
   (setq org-deadline-warning-days 7)
+#+end_src
+
+In my agenda, I want to see what I have scheduled today and what my deadlines for the upcoming week are. Next to that, a list of priorities and a list of todos that are in the VERZETTELEN state, would be helpful.
+
+#+begin_src emacs-lisp :tangle yes
+    (setq org-agenda-custom-commands
+	  '(("v" "Agenda, zettelkasten en prioriteiten"
+	     ((agenda ""
+		      ((org-agenda-overriding-header "Agenda")))
+	      (tags-todo "TODO=\"VERZETTELEN\""))
+	     )))
 #+end_src
 
 ** Hide emphasis markers

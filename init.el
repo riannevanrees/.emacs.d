@@ -68,6 +68,15 @@
 
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
+(global-set-key (kbd "C-c a") 'org-agenda)
+
 (setq org-deadline-warning-days 7)
+
+(setq org-agenda-custom-commands
+      '(("v" "Agenda, zettelkasten en prioriteiten"
+	 ((agenda ""
+		  ((org-agenda-overriding-header "Agenda")))
+	  (tags-todo "TODO=\"VERZETTELEN\""))
+	 )))
 
 (setq org-blank-before-new-entry '((heading . t) (plain-list-item . auto)))
