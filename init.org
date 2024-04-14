@@ -112,7 +112,7 @@ I use a self-developed theme, with colors inspired by the Disney movie Sleeping 
 
 I prefer a variable pitch font over a fixed pitch font in most cases. Activating the package mixed-pitch-mode in all text-modes takes care of choosing the correct font.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package autothemer
   :ensure t)
 
