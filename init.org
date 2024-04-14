@@ -50,6 +50,21 @@ I sometimes had some trouble that emacs would startup using an older version of 
     (load custom-file))
 #+end_src
 
+* Keep text in the center of the window
+*** TODO Experiment with Olivetti mode
+:LOGBOOK:
+CLOCK: [2024-04-14 Sun 21:05]--[2024-04-14 Sun 22:36] =>  1:31
+:END:
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package olivetti
+    :hook (text-mode prog-mode)
+    :custom
+    (olivetti-body-width 0.5)
+    (olivetti-minimum-body-width 50)
+    (olivetti-margin-width 7)
+    (olivetti-style 'fancy))
+#+end_src
 
 * Typing
 ** Auto-complete
@@ -79,11 +94,6 @@ Visual-fill-column also has an option that centers text, so now there are at lea
      :ensure t
      :bind ("C-c v" . visual-line-mode))
   (setq-default fill-column 80)
-  (setq-default visual-fill-column-center-text t)
-  (global-visual-fill-column-mode)
-
-  (use-package visual-line-mode
-    :hook (text-mode prog-mode))
 #+end_src
 
 ** Shorten yes and no
@@ -133,6 +143,8 @@ I prefer a variable pitch font over a fixed pitch font in most cases. Activating
 #+end_src
 
 * Org
+
+** TODO Look at org-fontify-todo-headline
 
 ** Custom TODO keywords
 I edited the TODO keywords, so that I could see more easily where I was in the process.
