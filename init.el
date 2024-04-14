@@ -8,6 +8,11 @@
 	       '("melpa" . "https://melpa.org/packages/"))
   (package-initialize))
 
+(setq load-prefer-newer t)
+(require 'auto-compile)
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
+
 (setq-default custom-file
 	      (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)

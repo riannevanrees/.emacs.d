@@ -21,7 +21,6 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
   ;; URL: https://github.com/riannevanrees/.emacs.d
 #+END_SRC
 
-
 * Package archive list
 
 #+begin_src emacs-lisp :tangle yes
@@ -32,6 +31,15 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
     (package-initialize))
 #+end_src
 
+* Prevent loading outdated files
+I sometimes had some trouble that emacs would startup using an older version of the init file. This bit of code helps to avoid that. Apparently there is an init.el file and a compiled version init.elc. That last one is typically targeted, so when I evaluate the init.el in a session, it gave a different result from opening Emacs from scratch. This setting helps to avoid that.
+
+#+begin_src emacs-lisp :tangle yes
+  (setq load-prefer-newer t)
+  (require 'auto-compile)
+  (auto-compile-on-load-mode)
+  (auto-compile-on-save-mode)
+#+end_src
 
 * Make sure emacs custom settings are written to custom.el
 
