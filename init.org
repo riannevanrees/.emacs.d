@@ -74,7 +74,7 @@ This code snippet loads the package which-key. It displays the key bindings that
     )
 #+end_src
 
-** Line wrapping and text-centering
+** Line wrapping
 
 It is frustrating is lines continue endlessly or words are continued on a different line, because a certain character limit is reached. The goal of this bit is to automatically wrap lines at 88 characters.
 
