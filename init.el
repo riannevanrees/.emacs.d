@@ -60,7 +60,8 @@
       '((sequence "TODO" "|" "DONE" "CANCELLED")
 	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")
 	(sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
-	(sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")))
+	(sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")
+	(sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")))
 
 (use-package org-superstar
   ;:hook (org-mode . (lambda () (org-superstar-mode 1)))
@@ -77,3 +78,7 @@
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
 (setq org-deadline-warning-days 7)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))

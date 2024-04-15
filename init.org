@@ -141,16 +141,20 @@ I prefer a variable pitch font over a fixed pitch font in most cases. Activating
 
 ** TODO Look at org-fontify-todo-headline
 
+** TODO Look at org-indent-mode
 ** Custom TODO keywords
 I edited the TODO keywords, so that I could see more easily where I was in the process.
 
 #+begin_src emacs-lisp :tangle yes
-      (setq org-todo-keywords
-	    '((sequence "TODO" "|" "DONE" "CANCELLED")
-	      (sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")
-	      (sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
-	      (sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")))
+    (setq org-todo-keywords
+	  '((sequence "TODO" "|" "DONE" "CANCELLED")
+	    (sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")
+	    (sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
+	    (sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")
+	    (sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")))
 #+end_src
+
+*** TODO Schrijven als keyword toevoegen.
 
 ** Use icons for headers and lists
 
