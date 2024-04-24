@@ -9,7 +9,7 @@
    '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(package-selected-packages
-   '(mixed-pitch rainbow-mode autothemer which-key visual-fill-column pdf-tools org-superstar matlab-mode markdown-mode magit julia-mode better-defaults auctex all-the-icons @)))
+   '(julia-formatter julia-snail vterm-toggle cmake-mode vterm exec-path-from-shell py-autopep8 flycheck-pycheckers conda olivetti auto-compile which-key visual-fill-column rainbow-mode pdf-tools org-superstar mixed-pitch matlab-mode markdown-mode magit julia-mode csv-mode better-defaults autothemer auctex all-the-icons @)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

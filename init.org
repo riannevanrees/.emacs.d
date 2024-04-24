@@ -21,7 +21,6 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
   ;; URL: https://github.com/riannevanrees/.emacs.d
 #+END_SRC
 
-
 * Package archive list
 
 #+begin_src emacs-lisp :tangle yes
@@ -32,6 +31,15 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
     (package-initialize))
 #+end_src
 
+* Prevent loading outdated files
+I sometimes had some trouble that emacs would startup using an older version of the init file. This bit of code helps to avoid that. Apparently there is an init.el file and a compiled version init.elc. That last one is typically targeted, so when I evaluate the init.el in a session, it gave a different result from opening Emacs from scratch. This setting helps to avoid that.
+
+#+begin_src emacs-lisp :tangle yes
+  (setq load-prefer-newer t)
+  (require 'auto-compile)
+  (auto-compile-on-load-mode)
+  (auto-compile-on-save-mode)
+#+end_src
 
 * Make sure emacs custom settings are written to custom.el
 
@@ -42,6 +50,16 @@ If I edit the configuration, I can tangle the org file using the command C-c C-v
     (load custom-file))
 #+end_src
 
+* Keep text in the center of the window
+#+begin_src emacs-lisp :tangle yes
+  (use-package olivetti
+    :hook (text-mode prog-mode)
+    :custom
+    (olivetti-body-width 0.5)
+    (olivetti-minimum-body-width 50)
+    (olivetti-margin-width 7)
+    (olivetti-style 'fancy))
+#+end_src
 
 * Typing
 ** Auto-complete
@@ -56,7 +74,7 @@ This code snippet loads the package which-key. It displays the key bindings that
     )
 #+end_src
 
-** Line wrapping and text-centering
+** Line wrapping
 
 It is frustrating is lines continue endlessly or words are continued on a different line, because a certain character limit is reached. The goal of this bit is to automatically wrap lines at 88 characters.
 
@@ -71,11 +89,6 @@ Visual-fill-column also has an option that centers text, so now there are at lea
      :ensure t
      :bind ("C-c v" . visual-line-mode))
   (setq-default fill-column 80)
-  (setq-default visual-fill-column-center-text t)
-  (global-visual-fill-column-mode)
-
-  (use-package visual-line-mode
-    :hook (text-mode prog-mode))
 #+end_src
 
 ** Shorten yes and no
@@ -112,7 +125,7 @@ I use a self-developed theme, with colors inspired by the Disney movie Sleeping 
 
 I prefer a variable pitch font over a fixed pitch font in most cases. Activating the package mixed-pitch-mode in all text-modes takes care of choosing the correct font.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package autothemer
   :ensure t)
 
@@ -126,16 +139,22 @@ I prefer a variable pitch font over a fixed pitch font in most cases. Activating
 
 * Org
 
+** TODO Look at org-fontify-todo-headline
+
+** TODO Look at org-indent-mode
 ** Custom TODO keywords
 I edited the TODO keywords, so that I could see more easily where I was in the process.
 
 #+begin_src emacs-lisp :tangle yes
-      (setq org-todo-keywords
-	    '((sequence "TODO" "|" "DONE" "CANCELLED")
-	      (sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")
-	      (sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
-	      (sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")))
+    (setq org-todo-keywords
+	  '((sequence "TODO" "|" "DONE" "CANCELLED")
+	    (sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")
+	    (sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
+	    (sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")
+	    (sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")))
 #+end_src
+
+*** TODO Schrijven als keyword toevoegen.
 
 ** Use icons for headers and lists
 
@@ -194,6 +213,65 @@ No such package, so I don't tangle it for now.
 ** Other settings
 #+begin_src emacs-lisp :tangle yes
   (setq org-blank-before-new-entry '((heading . t) (plain-list-item . auto)))
+#+end_src
+** Citations
+
+[[https://kristofferbalintona.me/posts/202206141852/][Useful post about citations.]]
+
+This bit of code does not work yet.
+
+#+begin_src emacs-lisp :tangle no
+  ;(org-cite-global-bibliography
+  ; '("~/Documents/bronnen/bronnen.bib"))
+  (org-cite-export-processors
+   '(latex biblatex))
+#+end_src
+
+* Programming
+*** Julia
+I am trying out [[https://github.com/gcv/julia-snail][snail]] to run Julia.
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package vterm
+  :ensure t)
+
+  (use-package julia-snail
+    :ensure t
+    :hook (julia-mode . julia-snail-mode))
+
+  (use-package julia-formatter
+    :hook julia-mode)
+#+end_src
+
+*** Python
+#+begin_src emacs-lisp :tangle yes
+(require 'conda)
+#+end_src
+
+This is a bit I found in my father's init.
+
+#+begin_src emacs-lisp :tangle yes
+  ;; exec-path-from-shell ensures the $PATH is set just like in your
+  ;; terminal. This helps finding pipx-installed tools when starting
+  ;; emacs from your OS
+  (use-package exec-path-from-shell
+    :if (memq window-system '(mac ns x))
+    :ensure t
+    :config
+    (exec-path-from-shell-initialize)
+    )
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package python
+  :config
+  (setq python-check-command "ruff")
+  (add-hook 'python-base-mode-hook 'eglot-ensure)
+  )
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package flymake)
 #+end_src
 * Not yet done
 

@@ -8,10 +8,23 @@
 	       '("melpa" . "https://melpa.org/packages/"))
   (package-initialize))
 
+(setq load-prefer-newer t)
+(require 'auto-compile)
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
+
 (setq-default custom-file
 	      (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
+
+(use-package olivetti
+  :hook (text-mode prog-mode)
+  :custom
+  (olivetti-body-width 0.5)
+  (olivetti-minimum-body-width 50)
+  (olivetti-margin-width 7)
+  (olivetti-style 'fancy))
 
 (use-package which-key
   :ensure t
@@ -23,11 +36,6 @@
    :ensure t
    :bind ("C-c v" . visual-line-mode))
 (setq-default fill-column 80)
-(setq-default visual-fill-column-center-text t)
-(global-visual-fill-column-mode)
-
-(use-package visual-line-mode
-  :hook (text-mode prog-mode))
 
 (setq use-short-answers t) ;; When emacs asks for "yes" or "no", let "y" or "n" suffice
 
@@ -52,7 +60,8 @@
       '((sequence "TODO" "|" "DONE" "CANCELLED")
 	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")
 	(sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
-	(sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")))
+	(sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")
+	(sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")))
 
 (use-package org-superstar
   ;:hook (org-mode . (lambda () (org-superstar-mode 1)))
@@ -80,3 +89,33 @@
 	 )))
 
 (setq org-blank-before-new-entry '((heading . t) (plain-list-item . auto)))
+
+(use-package vterm
+:ensure t)
+
+(use-package julia-snail
+  :ensure t
+  :hook (julia-mode . julia-snail-mode))
+
+(use-package julia-formatter
+  :hook julia-mode)
+
+(require 'conda)
+
+;; exec-path-from-shell ensures the $PATH is set just like in your
+;; terminal. This helps finding pipx-installed tools when starting
+;; emacs from your OS
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns x))
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize)
+  )
+
+(use-package python
+:config
+(setq python-check-command "ruff")
+(add-hook 'python-base-mode-hook 'eglot-ensure)
+)
+
+(use-package flymake)
