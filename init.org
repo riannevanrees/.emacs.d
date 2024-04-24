@@ -53,7 +53,7 @@ I sometimes had some trouble that emacs would startup using an older version of 
 * Keep text in the center of the window
 #+begin_src emacs-lisp :tangle yes
   (use-package olivetti
-    :hook (text-mode prog-mode)
+    :hook (text-mode prog-mode org-agenda-mode)
     :custom
     (olivetti-body-width 0.5)
     (olivetti-minimum-body-width 50)
@@ -139,24 +139,22 @@ I prefer a variable pitch font over a fixed pitch font in most cases. Activating
 
 * Org
 
-** TODO Look at org-fontify-todo-headline
 ** TODO Look at org-indent-mode
 ** Custom TODOs
 I edited the TODO keywords, so that I could see more easily where I was in the process.
 
 #+begin_src emacs-lisp :tangle yes
-    (setq org-todo-keywords
-	  '((sequence "TODO" "|" "DONE" "CANCELLED")
-	    (sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
-	    (sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
-	    (sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")
-	    (sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")))
+  (setq org-todo-keywords
+	'((sequence "TODO" "|" "DONE" "CANCELLED")
+	  (sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
+	  (sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
+	  (sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")
+	  (sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")))
 #+end_src
 
 #+begin_src emacs-lisp :tangle yes
   (setq org-fontify-todo-headline t)
 #+end_src
-
 
 ** Use icons for headers and lists
 
@@ -178,12 +176,27 @@ I edited the TODO keywords, so that I could see more easily where I was in the p
 
 ** Customize agenda
 
+Org agenda is centered by olivetti mode.
+
+This [[https://youtu.be/a_WNtuefREM?si=8zZC0Yt1afPpo_Mp][video by LibrePhoenix]] was helpful to designing this agenda.
+
 #+begin_src emacs-lisp :tangle yes
   (global-set-key (kbd "C-c a") 'org-agenda)
 #+end_src
 
 #+begin_src emacs-lisp :tangle yes
-  (setq org-deadline-warning-days 7)
+  (setq org-agenda-span 1
+	org-agenda-start-day "+0d"
+	org-agenda-skip-timestamp-if-done t
+	org-agenda-skip-scheduled-if-deadline-is-shown t
+	org-deadline-warning-days 7)
+
+  (setq org-agenda-prefix-format '(
+	(agenda . "%-12c%-12b ")
+	;(agenda . "%-15b ")
+	))
+
+  (setq org-agenda-breadcrumbs-seperator "")
 #+end_src
 
 In my agenda, I want to see what I have scheduled today and what my deadlines for the upcoming week are. Next to that, a list of priorities and a list of todos that are in the VERZETTELEN state, would be helpful.
@@ -195,6 +208,30 @@ In my agenda, I want to see what I have scheduled today and what my deadlines fo
 		      ((org-agenda-overriding-header "Agenda")))
 	      (tags-todo "TODO=\"VERZETTELEN\""))
 	     )))
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
+      (use-package org-super-agenda
+	:custom org-super-agenda-groups
+	'(
+	  (:name "Over datum"
+		 :deadline past
+		 :order 1
+		 :face 'error)
+	  (:name "Vandaag"
+		 :time-grid t
+		 :date today
+		 :scheduled today
+		 :scheduled past
+		 :deadline today
+		 :order 1)
+	  (:name "Deadlines"
+		 :deadline future
+		 :order 2)
+	  (:name "Belangrijk"
+		 :priority "A"
+		 :order 2)
+	  ))
 #+end_src
 
 ** Hide emphasis markers

@@ -19,7 +19,7 @@
   (load custom-file))
 
 (use-package olivetti
-  :hook (text-mode prog-mode)
+  :hook (text-mode prog-mode org-agenda-mode)
   :custom
   (olivetti-body-width 0.5)
   (olivetti-minimum-body-width 50)
@@ -81,7 +81,18 @@
 
 (global-set-key (kbd "C-c a") 'org-agenda)
 
-(setq org-deadline-warning-days 7)
+(setq org-agenda-span 1
+      org-agenda-start-day "+0d"
+      org-agenda-skip-timestamp-if-done t
+      org-agenda-skip-scheduled-if-deadline-is-shown t
+      org-deadline-warning-days 7)
+
+(setq org-agenda-prefix-format '(
+      (agenda . "%-12c%-12b ")
+      ;(agenda . "%-15b ")
+      ))
+
+(setq org-agenda-breadcrumbs-seperator "")
 
 (setq org-agenda-custom-commands
       '(("v" "Agenda, zettelkasten en prioriteiten"
@@ -89,6 +100,28 @@
 		  ((org-agenda-overriding-header "Agenda")))
 	  (tags-todo "TODO=\"VERZETTELEN\""))
 	 )))
+
+(use-package org-super-agenda
+  :custom org-super-agenda-groups
+  '(
+    (:name "Over datum"
+	   :deadline past
+	   :order 1
+	   :face 'error)
+    (:name "Vandaag"
+	   :time-grid t
+	   :date today
+	   :scheduled today
+	   :scheduled past
+	   :deadline today
+	   :order 1)
+    (:name "Deadlines"
+	   :deadline future
+	   :order 2)
+    (:name "Belangrijk"
+	   :priority "A"
+	   :order 2)
+    ))
 
 (setq org-blank-before-new-entry '((heading . t) (plain-list-item . auto)))
 
