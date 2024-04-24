@@ -58,10 +58,12 @@
 
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "CANCELLED")
-	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNUELEERD")
+	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
 	(sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
 	(sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")
 	(sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")))
+
+(setq org-fontify-todo-headline t)
 
 (use-package org-superstar
   ;:hook (org-mode . (lambda () (org-superstar-mode 1)))

@@ -107,6 +107,7 @@
    (org-upcoming-deadline (:foreground "Purple3" :weight 'bold))
    (org-scheduled-previously (:foreground "Purple3"))
    (org-scheduled-today   ())
+   (org-headline-todo     (:foreground sleeping-black :weight 'bold)) 
    ))
 
 (provide-theme 'sleeping-beauty)

@@ -146,6 +146,7 @@ A lot of the colors in the film are actually muted by mixing it with black. That
      (org-upcoming-deadline (:foreground "Purple3" :weight 'bold))
      (org-scheduled-previously (:foreground "Purple3"))
      (org-scheduled-today   ())
+     (org-headline-todo     (:foreground sleeping-black :weight 'bold)) 
      ))
 #+end_src
 
