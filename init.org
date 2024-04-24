@@ -195,6 +195,65 @@ No such package, so I don't tangle it for now.
 	org-appear-autosubmarkers t))	;; Enable on subscript and superscript
 #+end_src
 
+** Citations
+
+[[https://kristofferbalintona.me/posts/202206141852/][Useful post about citations.]]
+
+This bit of code does not work yet.
+
+#+begin_src emacs-lisp :tangle no
+  ;(org-cite-global-bibliography
+  ; '("~/Documents/bronnen/bronnen.bib"))
+  (org-cite-export-processors
+   '(latex biblatex))
+#+end_src
+
+* Programming
+*** Julia
+I am trying out [[https://github.com/gcv/julia-snail][snail]] to run Julia.
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package vterm
+  :ensure t)
+
+  (use-package julia-snail
+    :ensure t
+    :hook (julia-mode . julia-snail-mode))
+
+  (use-package julia-formatter
+    :hook julia-mode)
+#+end_src
+
+*** Python
+#+begin_src emacs-lisp :tangle yes
+(require 'conda)
+#+end_src
+
+This is a bit I found in my father's init.
+
+#+begin_src emacs-lisp :tangle yes
+  ;; exec-path-from-shell ensures the $PATH is set just like in your
+  ;; terminal. This helps finding pipx-installed tools when starting
+  ;; emacs from your OS
+  (use-package exec-path-from-shell
+    :if (memq window-system '(mac ns x))
+    :ensure t
+    :config
+    (exec-path-from-shell-initialize)
+    )
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package python
+  :config
+  (setq python-check-command "ruff")
+  (add-hook 'python-base-mode-hook 'eglot-ensure)
+  )
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package flymake)
+#+end_src
 * Not yet done
 
 ** PDF-tools

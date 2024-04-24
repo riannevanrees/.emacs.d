@@ -79,6 +79,32 @@
 
 (setq org-deadline-warning-days 7)
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((python . t)))
+(use-package vterm
+:ensure t)
+
+(use-package julia-snail
+  :ensure t
+  :hook (julia-mode . julia-snail-mode))
+
+(use-package julia-formatter
+  :hook julia-mode)
+
+(require 'conda)
+
+;; exec-path-from-shell ensures the $PATH is set just like in your
+;; terminal. This helps finding pipx-installed tools when starting
+;; emacs from your OS
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns x))
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize)
+  )
+
+(use-package python
+:config
+(setq python-check-command "ruff")
+(add-hook 'python-base-mode-hook 'eglot-ensure)
+)
+
+(use-package flymake)
