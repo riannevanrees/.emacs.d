@@ -61,7 +61,8 @@
 	(sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
 	(sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
 	(sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")
-	(sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")))
+	(sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")
+	(sequence "MAILEN" "|" "GEMAILD")))
 
 (setq org-fontify-todo-headline t)
 

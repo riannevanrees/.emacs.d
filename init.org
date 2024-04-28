@@ -144,12 +144,13 @@ I prefer a variable pitch font over a fixed pitch font in most cases. Activating
 I edited the TODO keywords, so that I could see more easily where I was in the process.
 
 #+begin_src emacs-lisp :tangle yes
-  (setq org-todo-keywords
-	'((sequence "TODO" "|" "DONE" "CANCELLED")
-	  (sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
-	  (sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
-	  (sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")
-	  (sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")))
+    (setq org-todo-keywords
+	  '((sequence "TODO" "|" "DONE" "CANCELLED")
+	    (sequence "LEZEN" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
+	    (sequence "LES" "VERZETTELEN" "|" "VOLTOOID" "GEANNULEERD")
+	    (sequence "WACHTEN" "|" "VOLTOOID" "GEANNULEERD")
+	    (sequence "SCHRIJVEN" "HERSCHRIJVEN" "|" "GESCHREVEN")
+	    (sequence "MAILEN" "|" "GEMAILD")))
 #+end_src
 
 #+begin_src emacs-lisp :tangle yes
