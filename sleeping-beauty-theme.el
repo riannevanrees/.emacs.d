@@ -107,7 +107,10 @@
    (org-upcoming-deadline (:foreground "Purple3" :weight 'bold))
    (org-scheduled-previously (:foreground "Purple3"))
    (org-scheduled-today   ())
-   (org-headline-todo     (:foreground sleeping-black :weight 'bold)) 
+   (org-headline-todo     (:foreground sleeping-black :weight 'bold))
+   (org-agenda-done      (:foreground dancing-blue))
+   (org-agenda-date-today  (:weight 'bold :height 2.0))
+   (org-super-agenda-header  (:family "athelas" :weight 'bold :height 2.0))
    ))
 
 (provide-theme 'sleeping-beauty)
